@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <link rel="stylesheet" href="/src/styles/index.css">
+   <title>Modal Task</title>
+</head>
+<body>
+
+<div class="website__wrapper">
+   <header class="header">
+      <div>[ — : ]</div>
+      <div>[ : — : ]</div>
+      <div>:[~ # ~]:</div>
+      <div>[ : — : ]</div>
+      <div>[ : — ]</div>
+   </header>
+
+   <main class="main">
+      <div class="section container">
+         <div class="main__content">
+            <div class="main__info">
+               <h1 class="main__title">Movie Finder</h1>
+               <div class="main__text">Press "<span>Ctrl + Shift + Z</span>"</div>
+               <div class="main__text">to start the search</div>
+            </div>
+
+            <div class="main__buttons">
+               <div class="main__item button --outline">Ctrl</div>
+               <div class="main__item button">+</div>
+               <div class="main__item button --outline">Shift</div>
+               <div class="main__item button">+</div>
+               <div class="main__item button --outline">Z</div>
+            </div>
+
+            <div class="main__text">or click to</div>
+
+            <button id="click-btn" class="main__button button --visible">Open modal</button>
+         </div>
+      </div>
+   </main>
+
+   <footer class="footer">
+      <div>[ — : ]</div>
+      <div>[ : — : ]</div>
+      <div>:[~ # ~]:</div>
+      <div>[ : — : ]</div>
+      <div>[ : — ]</div>
+   </footer>
+</div>
+
+<div class="modal__overlay hidden">
+   <div class="modal hidden">
+      <div class="modal__close">X</div>
+
+      <p class="modal__intro-text">
+         IMDB <span>Top-100</span> ranking
+      </p>
+
+      <div class="modal__search-movie">
+         <label for="modal__input" class="modal__label">
+            Type to find a favorite movie:
+            <input list="top-100-movies" type="text" name="movie" id="modal__input" class="modal__input" autofocus>
+            <datalist id="top-100-movies"></datalist>
+         </label>
+      </div>
+
+      <div class="modal__result"></div>
+
+      <div class="modal__footer">
+         <div>* <strong>IMDB</strong> — Internet Movie Database</div>
+         <div>* The list is based on ratings by the registered users of the IMDb website</div>
+      </div>
+   </div>
+</div>
+
+<script type="module" src="main.js"></script>
+</body>
+</html>

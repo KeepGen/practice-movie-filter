@@ -1,0 +1,51 @@
+@layer base {
+   html {
+      @apply box-border;
+      @apply relative font-sans font-normal leading-normal;
+   }
+
+   body {
+      @apply min-w-[360px] min-h-[100dvh] text-base text-black bg-grey/10 overflow-x-hidden;
+   }
+
+   img, svg {
+      @apply block max-w-full max-h-full h-full w-full;
+   }
+
+   button {
+      @apply block text-inherit bg-transparent border-0 p-0 cursor-pointer;
+   }
+
+   a {
+      @apply no-underline text-inherit;
+   }
+
+   ul {
+      @apply list-none p-0 m-0;
+   }
+
+   h1,
+   h2,
+   h3,
+   p,
+   figure,
+   fieldset {
+      @apply m-0;
+   }
+
+   iframe {
+      @apply border-0;
+   }
+
+   .website__wrapper {
+      @apply flex flex-col items-center min-w-full h-[100vh];
+   }
+
+   .container {
+      @apply border border-purple/50 rounded-2xl;
+   }
+
+   .section {
+      @apply bg-gray-200/50;
+   }
+}

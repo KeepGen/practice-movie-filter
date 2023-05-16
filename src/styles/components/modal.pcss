@@ -1,0 +1,49 @@
+.modal {
+   @apply absolute inset-40 z-10 mx-auto;
+   @apply max-w-[575px];
+   @apply flex flex-col gap-5 text-gray-900 bg-gray-200 rounded-2xl border border-purple p-8;
+
+   &__intro-text {
+      @apply  font-bold uppercase;
+      span {
+         @apply text-purple;
+      }
+   }
+
+   &__overlay {
+      @apply absolute inset-0 bg-gray-900/60;
+   }
+
+   &__close {
+      @apply absolute -top-3 -right-3;
+      @apply w-7 h-7 flex items-center justify-center text-white rounded-full border border-white bg-grey cursor-pointer transition-all;
+      @apply hover:bg-purple;
+   }
+
+   &__search-movie {
+      @apply flex align-bottom gap-2;
+   }
+
+   &__label {
+      @apply grid gap-2 self-start;
+      @apply text-sm text-black/75;
+   }
+
+   &__input {
+      @apply text-black/75 font-normal rounded py-1 px-2 outline-none ring-2 ring-purple/10;
+      @apply focus:ring-purple/50;
+   }
+
+   &__footer {
+      @apply flex flex-col gap-2 text-xs text-black/30 mt-auto;
+   }
+
+   &__result {
+      @apply w-full bg-amber-300/50 border border-dashed border-purple/50 rounded py-2 px-2;
+   }
+
+   &__clear {
+      @apply self-end p-0.5 opacity-50 cursor-pointer;
+      @apply hover:opacity-100;
+   }
+}

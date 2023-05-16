@@ -1,0 +1,11 @@
+@import 'components/fonts.pcss';
+@import 'components/base.pcss';
+
+@import 'components/header.pcss';
+@import 'components/main.pcss';
+@import 'components/modal.pcss';
+@import 'components/footer.pcss';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
