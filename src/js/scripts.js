@@ -1,4 +1,3 @@
-
 // =============================================
 // Get movies and show them in console.log -OR- Error
 // =============================================
@@ -32,17 +31,17 @@ renderMovieOptionList()
 // =============================================
 // Show movies result under datalist option
 // =============================================
-const showResult = (id, title, year, rating) => {
-   const modalResult = document.querySelector('.modal__result')
-   console.log(`%c#${id}`, 'color: #453643; border-radius:4px; background: #E3E3E3; padding: 4px 8px;', title + " (" + year + ")" + " / ⭐️️ Rating: " + rating + "/10");
-   modalResult.innerHTML = `
-      <div class="flex items-start gap-5">
-         <div class="bg-purple/25 rounded px-2">#${id}</div>
-         <div class="font-bold">${title} <span class="font-normal text-xs text-black/50 ml-2">(${year})</span></div>
-         <div class="flex shrink text-purple font-bold ml-auto">${rating}<span class="w-max text-black/50 font-normal ml-1">/ 100</span></div>
-      </div>
-   `
-}
+// const showResult = (id, title, year, rating) => {
+//    const modalResult = document.querySelector('.modal__result')
+//    console.log(`%c#${id}`, 'color: #453643; border-radius:4px; background: #E3E3E3; padding: 4px 8px;', title + " (" + year + ")" + " / ⭐️️ Rating: " + rating + "/10");
+//    modalResult.innerHTML = `
+//       <div class="flex items-start gap-5">
+//          <div class="bg-purple/25 rounded px-2">#${id}</div>
+//          <div class="font-bold">${title} <span class="font-normal text-xs text-black/50 ml-2">(${year})</span></div>
+//          <div class="flex shrink text-purple font-bold ml-auto">${rating}<span class="w-max text-black/50 font-normal ml-1">/ 100</span></div>
+//       </div>
+//    `
+// }
 
 // =============================================
 // Render movie list
@@ -59,16 +58,22 @@ function renderMovies(movies) {
 
    const modalResult = document.querySelector('.modal__result')
    movies.forEach(item => {
-      console.log(`%cResult:`, 'color: #453643; border-radius:4px; background: #E3E3E3; padding: 4px 8px;',item);
-      const {id, title, year, rating} = item
+      if(!item) {
 
-      result += `
+      } else {
+         console.log(`%cResult:`, 'color: #453643; border-radius:4px; background: #E3E3E3; padding: 4px 8px;', item);
+         const {id, title, year, rating} = item
+
+         result += `
          <div class="flex items-start gap-5">
             <div class="bg-purple/25 rounded px-2">#${id}</div>
             <div class="font-bold">${title} <span class="font-normal text-xs text-black/50 ml-2">(${year})</span></div>
             <div class="flex shrink text-purple font-bold ml-auto">${rating}<span class="w-max text-black/50 font-normal ml-1">/ 100</span></div>
          </div>
       `
+      }
+
+
    });
 
    modalResult.innerHTML = result
@@ -98,11 +103,13 @@ const clickBtn = document.getElementById('click-btn')
 const modal = document.querySelector('.modal')
 const modalOverlay = document.querySelector('.modal__overlay')
 const modalCloseBtn = document.querySelector('.modal__close')
+
 function toggleModal() {
    modal.classList.toggle('hidden')
    modalOverlay.classList.toggle('hidden')
    modalInput.focus()
 }
+
 clickBtn.addEventListener('click', toggleModal)
 modalCloseBtn.addEventListener('click', toggleModal)
 
@@ -110,7 +117,7 @@ modalCloseBtn.addEventListener('click', toggleModal)
 // =============================================
 // Toggle modal on keyboard Shortcuts
 // =============================================
-document.onkeyup = function(e) {
+document.onkeyup = function (e) {
    if (e.ctrlKey && e.shiftKey && e.code === 'KeyZ') {
       toggleModal()
       console.log(`%cCtrl + Shift + Z`, 'color: #000000; border-radius:4px; background: #F3DE2C; padding: 4px 8px;', "was pressed");
@@ -121,48 +128,22 @@ document.onkeyup = function(e) {
       console.log(`%cESC`, 'color: #FFFFFF; background: #E53D00; border-radius:4px; padding: 4px 8px;', "button was pressed");
    }
 };
-//
-// let data = ''
-//
-// const state = {
-//    data: {
-//       _value: '',
-//       set(v) {
-//          this._value = v
-//          renderSomething()
-//       },
-//       get() {
-//          return this._value
-//       }
-//    }
-// }
-//
-// state.data
-//
-// function setData(value) {
-//    data = value
-//
-//    renderSomething()
-// }
-//
-// function renderSomething() {
-//    document.body.innerHTML = data
-// }
-
 
 // TODO: Render function renders once all
-// TODO: Try vue reactive
+// TODO: Install Vue and try vue reactivity
 
 // =============================================
 // Movie selection from datalist › option
 // =============================================
 const inputField = document.querySelector('input[list="top-100-movies"]')
 inputField.addEventListener('input', onInput);
+
 function onInput(e) {
    const input = e.target;
    const value = input.value;
    const list = input.getAttribute('list');
-   const options = [...document.getElementById(list).childNodes];
+   // const options = [...document.getElementById(list).childNodes];
+   // The list of all options getting from datalist
 
    const result = movies.find((movie) => {
       return movie.title === value

@@ -12,7 +12,7 @@ A short app which filter TOP IMDB movie list
 - Add to **Vercel** or any other "static page hosting" service
 
 ---
-### # Done
+### # Change log
 - 2023-05-16 — Added to git
 - 2023-05-12 — Received new task for practice
 - 2023-05-12 — Show the code for review
