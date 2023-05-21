@@ -1,5 +1,4 @@
-@import 'components/fonts.pcss';
-@import 'components/base.pcss';
+@import 'base.pcss';
 
 @import 'components/header.pcss';
 @import 'components/main.pcss';

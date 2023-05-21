@@ -28,9 +28,9 @@ module.exports = {
             'black': '#181818',
          },
          fontFamily: {
-            satisfy: ['Satisfy', ...defaultTheme.fontFamily.sans],
-            domine: ['Domine', ...defaultTheme.fontFamily.serif],
-            rubik: ['Rubik Pixels', ...defaultTheme.fontFamily.serif],
+            sans: ['Asap', ...defaultTheme.fontFamily.sans],
+            serif: ['Lora', ...defaultTheme.fontFamily.serif],
+            mono: ['Space Mono', ...defaultTheme.fontFamily.mono],
          },
          spacing: {
             '8xl': '96rem',
