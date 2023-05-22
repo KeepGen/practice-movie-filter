@@ -1,52 +1,34 @@
 // =============================================
-// Get movies and show them in console.log -OR- Error
+// Get movies
 // =============================================
 async function getMovies() {
-   let url = '/src/api/movies.json';
+   let url = 'https://api.npoint.io/b79ceb4cd68e85d5eea7'
    try {
-      let res = await fetch(url);
-      return await res.json();
+      let res = await fetch(url)
+      console.log(`%cOK`, 'color: #000000; border-radius:4px; background: #7CB518; padding: 4px 8px;', 'Movie list has been connected')
+      return await res.json()
    } catch (error) {
-      console.log(error);
+      console.log(`%cERROR`, 'color: #FFFFFF; border-radius:4px; background: #E53D00; padding: 4px 8px;', error)
    }
 }
-
 
 // =============================================
 // Add movies to datalist option
 // =============================================
-const renderMovieOptionList = async () => {
+async function renderMovieOptionList() {
    const dataListOption = document.getElementById('top-100-movies')
-   let movies = await getMovies();
+   let movies = await getMovies()
    movies.forEach(item => {
       let option = document.createElement('option');
-      option.innerHTML = item.title;
-      dataListOption.appendChild(option);
-   });
-
+      option.innerHTML = item.title
+      dataListOption.appendChild(option)
+   })
 }
 renderMovieOptionList()
-
-
-// =============================================
-// Show movies result under datalist option
-// =============================================
-// const showResult = (id, title, year, rating) => {
-//    const modalResult = document.querySelector('.modal__result')
-//    console.log(`%c#${id}`, 'color: #453643; border-radius:4px; background: #E3E3E3; padding: 4px 8px;', title + " (" + year + ")" + " / ⭐️️ Rating: " + rating + "/10");
-//    modalResult.innerHTML = `
-//       <div class="flex items-start gap-5">
-//          <div class="bg-purple/25 rounded px-2">#${id}</div>
-//          <div class="font-bold">${title} <span class="font-normal text-xs text-black/50 ml-2">(${year})</span></div>
-//          <div class="flex shrink text-purple font-bold ml-auto">${rating}<span class="w-max text-black/50 font-normal ml-1">/ 100</span></div>
-//       </div>
-//    `
-// }
 
 // =============================================
 // Render movie list
 // =============================================
-
 let movies = []
 
 getMovies().then((result) => {
@@ -61,7 +43,7 @@ function renderMovies(movies) {
       if(!item) {
 
       } else {
-         console.log(`%cResult:`, 'color: #453643; border-radius:4px; background: #E3E3E3; padding: 4px 8px;', item);
+         console.log(`%cResult:`, 'color: #453643; border-radius:4px; background: #E3E3E3; padding: 4px 8px;', item)
          const {id, title, year, rating} = item
 
          result += `
@@ -72,13 +54,9 @@ function renderMovies(movies) {
          </div>
       `
       }
-
-
    });
-
    modalResult.innerHTML = result
 }
-
 
 // =============================================
 // Clear input
@@ -89,12 +67,11 @@ const btnClear = document.createElement('div')
 modalLabel.appendChild(btnClear)
 btnClear.classList.add('modal__clear')
 btnClear.innerHTML = '❌'
-const clearInput = () => {
+function clearInput() {
    modalInput.value = ''
    modalInput.focus()
 }
 btnClear.addEventListener('click', clearInput)
-
 
 // =============================================
 // Toggle modal on click
@@ -104,61 +81,47 @@ const modal = document.querySelector('.modal')
 const modalOverlay = document.querySelector('.modal__overlay')
 const modalCloseBtn = document.querySelector('.modal__close')
 
-function toggleModal() {
-   modal.classList.toggle('hidden')
-   modalOverlay.classList.toggle('hidden')
+function showModal() {
+   modal.classList.remove('hidden')
+   modalOverlay.classList.remove('hidden')
    modalInput.focus()
 }
 
-clickBtn.addEventListener('click', toggleModal)
-modalCloseBtn.addEventListener('click', toggleModal)
+function hideModal() {
+   modal.classList.add('hidden')
+   modalOverlay.classList.add('hidden')
+}
 
+function checkModalStatus() {
+   const status = modal.classList.contains('hidden')
+   status ? showModal() : hideModal()
+}
+
+clickBtn.addEventListener('click', checkModalStatus)
+modalCloseBtn.addEventListener('click', checkModalStatus)
+modalOverlay.addEventListener('click', hideModal)
 
 // =============================================
-// Toggle modal on keyboard Shortcuts
+// Toggle modal on keyboard shortcuts
 // =============================================
 document.onkeyup = function (e) {
    if (e.ctrlKey && e.shiftKey && e.code === 'KeyZ') {
-      toggleModal()
-      console.log(`%cCtrl + Shift + Z`, 'color: #000000; border-radius:4px; background: #F3DE2C; padding: 4px 8px;', "was pressed");
+      checkModalStatus()
    } else if (e.code === 'Escape') {
-      // @todo hide modal function
-      modal.classList.add('hidden')
-      modalOverlay.classList.add('hidden')
-      console.log(`%cESC`, 'color: #FFFFFF; background: #E53D00; border-radius:4px; padding: 4px 8px;', "button was pressed");
+      hideModal()
    }
-};
-
-// TODO: Render function renders once all
-// TODO: Install Vue and try vue reactivity
+}
 
 // =============================================
-// Movie selection from datalist › option
+// Render the result on picking it on input
 // =============================================
 const inputField = document.querySelector('input[list="top-100-movies"]')
-inputField.addEventListener('input', onInput);
-
 function onInput(e) {
-   const input = e.target;
-   const value = input.value;
-   const list = input.getAttribute('list');
-   // const options = [...document.getElementById(list).childNodes];
-   // The list of all options getting from datalist
-
+   const input = e.target
+   const value = input.value
    const result = movies.find((movie) => {
       return movie.title === value
    })
-
    renderMovies([result])
-
-   // for(let i = 0; i < options.length; i++) {
-   //    if(options[i].innerText === value) {
-   //       console.log(`%cInput result:`, 'color: #000000; border-radius:4px; background: #F3DE2C; padding: 4px 8px;', value);
-   //       renderMovies(value)
-   //       break;
-   //    } else if (value === '') {
-   //       console.log(`%cResult:`, 'color: #FFFFFF; border-radius:4px; background: #E53D00; padding: 4px 8px;', 'Clear');
-   //       break;
-   //    }
-   // }
 }
+inputField.addEventListener('input', onInput)

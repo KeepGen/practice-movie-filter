@@ -8,25 +8,29 @@ A short practice application which can filter TOP-100 IMDB movie list
 
 #### In Progress:
 
-- Add to **Vercel** or any other "static page hosting" service
-- Refactor the code, clear from duplicates and tech-trash
-- Review functions › use one action inside the function
+- Add "Getting started" block on `README.md` file
+- Add responsive styles for tablet and mobile view
 
 #### Backlog:
 
-- Reword toggle function to `hide` and `show` instead of `toggle`
-- Add "Getting started" block on `README.md` file
+- Add to **Vercel** or any other "static page hosting" service
 - Add **VueJS** and use `Ref()` for reactivity
-- Add responsive styles for tablet and mobile view
 
 ---
 
 ## Change log
 
+###### 2023-05-22
+
+- Moved movies database from `src/api/movies.json` to `jsonkeeper.com` website
+- Rework toggle function to `hide` and `show` instead of `toggle`
+- Review functions › use one action inside the function
+- Refactor the code, clear from duplicates and tech-trash
+- Modified the command for DEV in `package.json` to have access to the website on different devices by network
+- Cleared unused files and folders (images and fonts.pcss)
+
 ###### 2023-05-21
 
-- Modified the command for DEV to have access to website on different devices by network
-- Cleared unused files and folders (images and fonts.pcss)
 - Reworked `README.md` file and added the tasks which were made before the code review
 
 ###### 2023-05-19
