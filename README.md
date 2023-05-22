@@ -22,6 +22,7 @@ A short practice application which can filter TOP-100 IMDB movie list
 
 ###### 2023-05-22
 
+- Added new categories to movies database: `genre`,`runtime`, `director` and `stars`
 - Moved movies database from `src/api/movies.json` to `jsonkeeper.com` website
 - Rework toggle function to `hide` and `show` instead of `toggle`
 - Review functions › use one action inside the function
