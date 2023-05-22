@@ -25,6 +25,8 @@ A short practice application which can filter TOP-100 IMDB movie list
 
 ###### 2023-05-21
 
+- Modified the command for DEV to have access to website on different devices by network
+- Cleared unused files and folders (images and fonts.pcss)
 - Reworked `README.md` file and added the tasks which were made before the code review
 
 ###### 2023-05-19
