@@ -3,7 +3,8 @@
       @apply m-auto;
 
       &__content {
-         @apply w-full flex flex-col gap-4 p-10;
+         @apply w-full flex flex-col gap-4 py-4 px-2;
+         @apply tablet:p-10;
       }
 
       &__title {
@@ -19,7 +20,8 @@
       }
 
       &__buttons {
-         @apply flex gap-4 border border-dashed border-gray-300 bg-gray-100 rounded p-3;
+         @apply flex gap-1 items-center border border-dashed border-gray-300 bg-gray-100 rounded p-3;
+         @apply tablet:gap-4;
       }
 
       &__item {

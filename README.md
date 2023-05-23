@@ -8,7 +8,6 @@ A short practice application which can filter TOP-100 IMDB movie list
 
 #### In Progress:
 
-- Add responsive styles for tablet and mobile view
 - Add "Getting started" block on `README.md` file
 
 #### Backlog:
@@ -21,6 +20,7 @@ A short practice application which can filter TOP-100 IMDB movie list
 
 ###### 2023-05-23
 
+- Added responsive styles for tablet and mobile view
 - Added new real images to movies database in `poster` category.
 - The project has been added to **[Vercel](https://practice-movie-filter.vercel.app/)**
 
