@@ -2,7 +2,7 @@
 // Get movies
 // =============================================
 async function getMovies() {
-   let url = 'https://api.npoint.io/b79ceb4cd68e85d5eea7'
+   let url = 'https://api.npoint.io/ac67b54c9cc188cc0232'
    try {
       let res = await fetch(url)
       console.log(`%cOK`, 'color: #000000; border-radius:4px; background: #7CB518; padding: 4px 8px;', 'Movie list has been connected')
@@ -44,13 +44,49 @@ function renderMovies(movies) {
 
       } else {
          console.log(`%cResult:`, 'color: #453643; border-radius:4px; background: #E3E3E3; padding: 4px 8px;', item)
-         const {id, title, year, rating} = item
+         const {id, title, description, year, rating, genre, runtime, gross, director, stars, poster} = item
 
          result += `
+         <!--
          <div class="flex items-start gap-5">
             <div class="bg-purple/25 rounded px-2">#${id}</div>
             <div class="font-bold">${title} <span class="font-normal text-xs text-black/50 ml-2">(${year})</span></div>
-            <div class="flex shrink text-purple font-bold ml-auto">${rating}<span class="w-max text-black/50 font-normal ml-1">/ 100</span></div>
+            <div class="flex shrink text-purple font-bold ml-auto">${rating}<span class="w-max text-black/50 font-normal ml-1">/ 10</span></div>
+         </div>
+         -->
+
+         <div class="flex flex-col items-center gap-3">
+            <div class="w-full flex gap-2">
+               <img src="${poster}" alt="${title}" class="w-[50px] tablet:w-[100px] h-auto rounded">
+               <div class="w-full flex flex-col">
+                  <div class="w-full font-bold border-b border-grey-dark/25 pb-1">${title}</div>
+                  <div class="flex flex-col font-bold text-xs mt-1">
+                     <div class="font-bold">Year: <span class="font-normal">${year}</span></div>
+                     <div class="font-bold">Genre: <span class="font-normal">${genre}</span></div>
+                  </div>
+               </div>
+            </div>
+
+            <div class="w-full flex flex-col self-start justify-between text-xs">
+               <div class="font-bold">Runtime: <span class="font-normal">${runtime} min</span></div>
+               <div class="font-bold">Gross: <span class="font-normal">$${gross}M</span></div>
+            </div>
+
+            <div class="w-full flex items-center justify-between">
+               <div class="w-fit text-sm bg-purple/25 rounded py-1 px-2">#${id}</div>
+               <div class="flex text-sm text-purple font-bold">${rating}</div>
+            </div>
+
+            <div class="flex flex-col gap-1 text-xs">
+               <div class="font-bold">Director: <span class="font-normal">${director}</span></div>
+               <div class="font-bold">Stars: <span class="font-normal">${stars}</span></div>
+            </div>
+
+            <div class="w-full flex self-start justify-between text-xs">
+               <div class="font-bold">Synopsis: <span class="font-normal">${description}</span></div>
+            </div>
+
+
          </div>
       `
       }
