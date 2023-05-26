@@ -16,7 +16,7 @@ async function getMovies() {
 // Add movies to datalist option
 // =============================================
 async function renderMovieOptionList() {
-   const dataListOption = document.getElementById('top-100-movies')
+   const dataListOption = document.getElementById('top-1000-movies')
    let movies = await getMovies()
    movies.forEach(item => {
       let option = document.createElement('option');
@@ -44,7 +44,7 @@ function renderMovies(movies) {
 
       } else {
          console.log(`%cResult:`, 'color: #453643; border-radius:4px; background: #E3E3E3; padding: 4px 8px;', item)
-         const {rank, title, description, year, rating, genre, runtime, revenue, director, stars, poster} = item
+         const {rank, title, description, year, rating, genre, runtime, gross, director, stars, poster} = item
 
          result += `
          <!--
@@ -56,37 +56,38 @@ function renderMovies(movies) {
          -->
 
          <div class="flex flex-col items-center gap-3">
-            <div class="w-full flex gap-2">
-               <img src="${poster}" alt="${title}" class="w-[50px] tablet:w-[100px] h-auto rounded">
+            <div class="w-full flex flex-col tablet:flex-row gap-2">
+               <img src="${poster}" alt="${title}"
+                  class="w-32 h-auto flex flex-shrink-0 rounded mx-auto tablet:ml-0"
+               >
+
                <div class="w-full flex flex-col">
-                  <div class="w-full font-bold border-b border-grey-dark/25 pb-1">${title}</div>
-                  <div class="flex flex-col font-bold text-xs mt-1">
-                     <div class="font-bold">Year: <span class="font-normal">${year}</span></div>
-                     <div class="font-bold">Genre: <span class="font-normal">${genre}</span></div>
+                  <div class="w-full flex flex-wrap items-end gap-x-2 pb-1 mt-2 tablet:mt-0">
+                     <div class="font-bold">${title}</div>
+                     <span class="font-normal text-xs text-black/75 mb-0.5">(${year})</span>
+                  </div>
+
+                  <div class="w-full flex items-center justify-between border-y border-y-grey-dark/10 p-1">
+                     <div class="font-bold text-sm py-1.5">Rank: <span class="w-fit text-sm text-black bg-purple/25 rounded py-1.5 px-2">#${rank}</span></div>
+                     <div class="flex text-sm text-purple font-bold">${rating} <span class="text-black/50 ml-1">/ 10</span></div>
+                  </div>
+
+                  <div class="flex flex-col font-bold text-xs mt-1 p-0.5">
+                     <div class="text-black/75 font-normal">${description}</div>
                   </div>
                </div>
             </div>
 
             <div class="w-full flex flex-col self-start justify-between text-xs">
                <div class="font-bold">Runtime: <span class="font-normal">${runtime} min</span></div>
-               <div class="font-bold">Gross: <span class="font-normal">$${revenue}M</span></div>
+               <div class="font-bold">Genre: <span class="font-normal">${genre}</span></div>
+               <div class="font-bold">Gross: <span class="font-normal">${gross}</span></div>
             </div>
 
-            <div class="w-full flex items-center justify-between">
-               <div class="w-fit text-sm bg-purple/25 rounded py-1 px-2">#${rank}</div>
-               <div class="flex text-sm text-purple font-bold">${rating}</div>
-            </div>
-
-            <div class="flex flex-col gap-1 text-xs">
+            <div class="w-full flex flex-col gap-1 text-xs">
                <div class="font-bold">Director: <span class="font-normal">${director}</span></div>
                <div class="font-bold">Stars: <span class="font-normal">${stars}</span></div>
             </div>
-
-            <div class="w-full flex self-start justify-between text-xs">
-               <div class="font-bold">Synopsis: <span class="font-normal">${description}</span></div>
-            </div>
-
-
          </div>
       `
       }
@@ -151,7 +152,7 @@ document.onkeyup = function (e) {
 // =============================================
 // Render the result on picking it on input
 // =============================================
-const inputField = document.querySelector('input[list="top-100-movies"]')
+const inputField = document.querySelector('input[list="top-1000-movies"]')
 function onInput(e) {
    const input = e.target
    const value = input.value

@@ -82,15 +82,15 @@ Object.entries(dbDirsStars).forEach((persons, i) => {
 })
 
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
-const revenue = {}
+const gross = {}
 allRevenueData.forEach((item, i) => {
    if(!item.innerText.includes('$')){
-      revenue[i] = 'n/a'
+      gross[i] = 'n/a'
    } else {
       const subitem = item.children
       for(let j = 0; j < subitem.length; j++){
          if(subitem[j].innerText.indexOf("$") > -1) {
-            revenue[i] = subitem[j].innerText.replace(/\$|M/g,"")
+            gross[i] = subitem[j].innerText
          }
       }
    }
@@ -109,13 +109,13 @@ for(let i = 0; i < 1000; i++){
       rank: ranksArr[i].replace('.',''),
       title: titlesArr[i],
       description: descriptionArr[i],
-      years: years[i],
+      year: years[i],
       genre: genres[i],
       runtime: runtime[i],
-      ranking: ranking[i],
+      rating: ranking[i],
       director: directors[i],
       stars: stars[i],
-      revenue: revenue[i],
+      gross: gross[i],
       poster: postersArr[i]
    }
    moviesDB.push(movies)
