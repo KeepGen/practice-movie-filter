@@ -20,6 +20,7 @@ A short practice application which can filter TOP-100 IMDB movie list
 
 ###### 2023-05-26
 
+- Fixed minor mistakes in movies database
 - Extended the movies database from 100 to 1000 items **[IMDb Top-1000 Movies ](https://www.imdb.com/search/title/?count=100&groups=top_1000&sort=user_rating)**
 - Added new category `description` to movies database
 - Added script file which helped to parse the list of movies with details on **IMDb Website**

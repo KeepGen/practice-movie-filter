@@ -44,12 +44,12 @@ function renderMovies(movies) {
 
       } else {
          console.log(`%cResult:`, 'color: #453643; border-radius:4px; background: #E3E3E3; padding: 4px 8px;', item)
-         const {id, title, description, year, rating, genre, runtime, gross, director, stars, poster} = item
+         const {rank, title, description, year, rating, genre, runtime, revenue, director, stars, poster} = item
 
          result += `
          <!--
          <div class="flex items-start gap-5">
-            <div class="bg-purple/25 rounded px-2">#${id}</div>
+            <div class="bg-purple/25 rounded px-2">#${rank}</div>
             <div class="font-bold">${title} <span class="font-normal text-xs text-black/50 ml-2">(${year})</span></div>
             <div class="flex shrink text-purple font-bold ml-auto">${rating}<span class="w-max text-black/50 font-normal ml-1">/ 10</span></div>
          </div>
@@ -69,11 +69,11 @@ function renderMovies(movies) {
 
             <div class="w-full flex flex-col self-start justify-between text-xs">
                <div class="font-bold">Runtime: <span class="font-normal">${runtime} min</span></div>
-               <div class="font-bold">Gross: <span class="font-normal">$${gross}M</span></div>
+               <div class="font-bold">Gross: <span class="font-normal">$${revenue}M</span></div>
             </div>
 
             <div class="w-full flex items-center justify-between">
-               <div class="w-fit text-sm bg-purple/25 rounded py-1 px-2">#${id}</div>
+               <div class="w-fit text-sm bg-purple/25 rounded py-1 px-2">#${rank}</div>
                <div class="flex text-sm text-purple font-bold">${rating}</div>
             </div>
 
