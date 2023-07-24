@@ -4,11 +4,21 @@ A short practice application which can filter TOP-1000 IMDB movie list
 
 ---
 
+## Getting Started
+```
+   "dev": "vite --host",
+   "build": "vite build",
+   "preview": "vite preview",
+   "build & preview": "vite build && npm run preview"
+```
+
+---
+
 ## Tasks
 
 #### In Progress:
 
-- Add "Getting started" block on `README.md` file
+- Refactor the code, using the Classes
 
 #### Backlog:
 
@@ -17,6 +27,11 @@ A short practice application which can filter TOP-1000 IMDB movie list
 ---
 
 ## Change log
+
+###### 2023-07-24
+
+- Add "Getting started" block on `README.md` file
+- Display the text error in case database isn't loaded
 
 ###### 2023-05-26
 
